@@ -1,0 +1,22 @@
+--- origsrc/scite/src/FilePath.h	2011-09-16 04:14:07.000000000 -0500
++++ src/scite/src/FilePath.h	2011-12-14 06:47:13.292057500 -0600
+@@ -12,6 +12,8 @@ extern const GUI::gui_char configFileVis
+ extern const GUI::gui_char fileRead[];
+ extern const GUI::gui_char fileWrite[];
+ 
++#include <stdio.h>
++
+ #if defined(__unix__)
+ #include <limits.h>
+ #ifdef PATH_MAX
+--- origsrc/scite/src/FileWorker.h	2011-12-08 16:16:52.000000000 -0600
++++ src/scite/src/FileWorker.h	2011-12-14 06:46:22.690163200 -0600
+@@ -5,6 +5,8 @@
+ // Copyright 2011 by Neil Hodgson <neilh@scintilla.org>
+ // The License.txt file describes the conditions under which this software may be distributed.
+ 
++#include <stdio.h>
++
+ /// Base size of file I/O operations.
+ const int blockSize = 131072;
+ 

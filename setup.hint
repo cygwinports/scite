@@ -1,0 +1,6 @@
+category: Editors Gnome
+requires: libcairo2 libgcc1 libgdk_pixbuf2.0_0 libglib2.0_0 libgtk3_0 libpango1.0_0 libstdc++6
+sdesc: "GTK+ Scintilla-based Text Editor"
+ldesc: "SciTE is a SCIntilla based Text Editor. Originally built to 
+demonstrate Scintilla, it has grown to be a generally useful editor with 
+facilities for building and running programs."

@@ -1,0 +1,21 @@
+DESCRIPTION="GTK+ Scintilla-based text editor"
+HOMEPAGE="http://www.scintilla.org/SciTE.html"
+SRC_URI="mirror://sourceforge/scintilla/${PN}${PV//.}.tgz"
+SRC_DIR=.
+PATCH_URI="3.0.2-stdio.patch"
+
+MAKEOPTS+=" GTK3=1"
+
+src_compile() {
+	lndirs
+	cd ${B}/scintilla/gtk
+	cygmake
+	cd ${B}/scite/gtk
+	cygmake
+}
+
+src_install() {
+	cd ${B}/scite/gtk
+	cyginstall
+}
+DOCS="scite/README"
