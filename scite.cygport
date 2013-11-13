@@ -1,0 +1,28 @@
+NAME="scite"
+VERSION=3.0.2
+RELEASE=1
+CATEGORY="Editors"
+SUMMARY="GTK+ Scintilla-based Text Editor"
+DESCRIPTION="SciTE is a SCIntilla based Text Editor. Originally built to
+demonstrate Scintilla, it has grown to be a generally useful editor with
+facilities for building and running programs."
+HOMEPAGE="http://www.scintilla.org/SciTE.html"
+SRC_URI="mirror://sourceforge/scintilla/${NAME}${VERSION//.}.tgz"
+SRC_DIR=.
+PATCH_URI="3.0.2-stdio.patch"
+
+MAKEOPTS+=" GTK3=1"
+
+src_compile() {
+	lndirs
+	cd ${B}/scintilla/gtk
+	cygmake
+	cd ${B}/scite/gtk
+	cygmake
+}
+
+src_install() {
+	cd ${B}/scite/gtk
+	cyginstall
+}
+DOCS="scite/README"
