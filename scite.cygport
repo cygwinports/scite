@@ -1,5 +1,5 @@
 NAME="scite"
-VERSION=3.0.2
+VERSION=3.3.6
 RELEASE=1
 CATEGORY="Editors"
 SUMMARY="GTK+ Scintilla-based Text Editor"
