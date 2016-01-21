@@ -40,7 +40,8 @@ src_compile() {
 	ln -sf /usr/include/lua-5.1/*.h ${B}/scite/lua/include/
 
 	cd ${B}/scintilla/win32
-	cygmake DEBUG=1 OS=Cygwin
+	cygmake DEBUG=1 OS=Cygwin \
+		LDFLAGS="-shared -mwindows -L/usr/lib/w32api -Wl,--add-stdcall-alias"
 	cd ${B}/scintilla/gtk
 	cygmake DEBUG=1 GTK3=1
 	cd ${B}/scite/gtk
