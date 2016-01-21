@@ -1,5 +1,5 @@
 NAME="scite"
-VERSION=3.3.6
+VERSION=3.6.3
 RELEASE=1
 CATEGORY="Editors"
 SUMMARY="GTK+ Scintilla-based Text Editor"
@@ -7,22 +7,55 @@ DESCRIPTION="SciTE is a SCIntilla based Text Editor. Originally built to
 demonstrate Scintilla, it has grown to be a generally useful editor with
 facilities for building and running programs."
 HOMEPAGE="http://www.scintilla.org/SciTE.html"
-SRC_URI="mirror://sourceforge/scintilla/${NAME}${VERSION//.}.tgz"
+SRC_URI="http://www.scintilla.org/scite${VERSION//.}.tgz"
 SRC_DIR=.
-PATCH_URI="3.0.2-stdio.patch"
+PATCH_URI="
+	3.0.2-stdio.patch
+	3.6.3-cygwin-long.patch
+	3.6.3-rdynamic.patch
+	3.6.3-std-gnu++11.patch
+	3.6.3-win32-debuginfo.patch
+"
 
-MAKEOPTS+=" GTK3=1"
+#BUILDREQUIRES=(libgtk3-devel lua5.1-devel)
+
+PKG_NAMES="scite scintilla-win32"
+scintilla_win32_SUMMARY="Win32 Scintilla components"
+scintilla_win32_CONTENTS="
+	usr/bin/Sci*.dll
+	usr/share/doc/scintilla-win32/
+"
+scite_CONTENTS="
+	etc/postinstall/scite.sh
+	usr/bin/SciTE.exe
+	usr/share/applications/
+	usr/share/doc/scite/
+	usr/share/pixmaps/
+	usr/share/scite/
+"
 
 src_compile() {
 	lndirs
+	rm -f ${B}/scite/lua/include/*.h
+	ln -sf /usr/include/lua-5.1/*.h ${B}/scite/lua/include/
+
+	cd ${B}/scintilla/win32
+	cygmake DEBUG=1 OS=Cygwin
 	cd ${B}/scintilla/gtk
-	cygmake
+	cygmake DEBUG=1 GTK3=1
 	cd ${B}/scite/gtk
-	cygmake
+	cygmake DEBUG=1 GTK3=1 LUA_CORE_OBJS= LUA_LIB_OBJS=/usr/lib/liblua-5.1.dll.a
 }
 
 src_install() {
+	cd ${B}/scintilla
+	dobin bin/Sci*.dll
 	cd ${B}/scite/gtk
 	cyginstall
+
+	cd ${S}
+	dodoc scite/README scite/License.txt
+	docinto /scintilla-win32
+	dodoc scintilla/README scintilla/License.txt
 }
-DOCS="scite/README"
+

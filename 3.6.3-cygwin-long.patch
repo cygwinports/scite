@@ -1,0 +1,11 @@
+--- origsrc/scintilla/include/Scintilla.h	2016-01-17 16:34:04.000000000 -0600
++++ src/scintilla/include/Scintilla.h	2016-01-20 16:11:29.867780900 -0600
+@@ -34,7 +34,7 @@ int Scintilla_LinkLexers(void);
+ #if defined(_WIN32)
+ #include <basetsd.h>
+ #endif
+-#ifdef MAXULONG_PTR
++#if defined(_WIN32) && !defined(__CYGWIN__)
+ typedef ULONG_PTR uptr_t;
+ typedef LONG_PTR sptr_t;
+ #else

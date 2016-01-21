@@ -1,3 +1,13 @@
+--- origsrc/scintilla/win32/HanjaDic.cxx	2015-05-26 17:36:11.000000000 -0500
++++ src/scintilla/win32/HanjaDic.cxx	2016-01-20 17:08:16.525070700 -0600
+@@ -6,6 +6,7 @@
+ // Copyright 2015 by Neil Hodgson <neilh@scintilla.org>
+ // The License.txt file describes the conditions under which this software may be distributed.
+ 
++#include <wchar.h>
+ #include <windows.h>
+ 
+ #include "UniConversion.h"
 --- origsrc/scite/src/FilePath.h	2011-09-16 04:14:07.000000000 -0500
 +++ src/scite/src/FilePath.h	2011-12-14 06:47:13.292057500 -0600
 @@ -12,6 +12,8 @@ extern const GUI::gui_char configFileVis
