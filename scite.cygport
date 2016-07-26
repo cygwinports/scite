@@ -1,5 +1,5 @@
 NAME="scite"
-VERSION=3.6.3
+VERSION=3.6.6
 RELEASE=1
 CATEGORY="Editors"
 SUMMARY="GTK+ Scintilla-based Text Editor"
@@ -12,7 +12,6 @@ SRC_DIR=.
 PATCH_URI="
 	3.0.2-stdio.patch
 	3.6.3-cygwin-long.patch
-	3.6.3-rdynamic.patch
 	3.6.3-std-gnu++11.patch
 	3.6.3-win32-debuginfo.patch
 "
@@ -26,7 +25,6 @@ scintilla_win32_CONTENTS="
 	usr/share/doc/scintilla-win32/
 "
 scite_CONTENTS="
-	etc/postinstall/scite.sh
 	usr/bin/SciTE.exe
 	usr/share/applications/
 	usr/share/doc/scite/

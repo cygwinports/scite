@@ -1,25 +1,5 @@
---- origsrc/scintilla/gtk/makefile	2016-01-17 16:34:04.000000000 -0600
-+++ src/scintilla/gtk/makefile	2016-01-20 13:06:48.143593700 -0600
-@@ -74,7 +74,7 @@ CTFLAGS=-DNDEBUG -Os $(CXXBASEFLAGS) $(T
- endif
- 
- CFLAGS:=$(CTFLAGS)
--CXXTFLAGS:=--std=c++0x $(CTFLAGS) $(REFLAGS)
-+CXXTFLAGS:=-std=gnu++0x $(CTFLAGS) $(REFLAGS)
- 
- CONFIGFLAGS:=$(shell pkg-config --cflags $(GTKVERSION))
- MARSHALLER=scintilla-marshal.o
---- origsrc/scintilla/win32/makefile	2016-01-17 16:34:04.000000000 -0600
-+++ src/scintilla/win32/makefile	2016-01-20 16:09:21.867604200 -0600
-@@ -31,7 +31,7 @@ ifneq "$(shell g++ -c CheckD2D.cxx 2>&1)
- D2DFLAGS=-DDISABLE_D2D
- endif
- 
--CXXBASEFLAGS=--std=c++0x -Wall -pedantic $(INCLUDEDIRS) $(D2DFLAGS)
-+CXXBASEFLAGS=-std=gnu++0x -Wall -pedantic $(INCLUDEDIRS) $(D2DFLAGS)
- 
- ifdef CXX11_REGEX
- REFLAGS=-DCXX11_REGEX
+popen, pclose, strdup
+
 --- origsrc/scite/gtk/makefile	2015-09-21 20:37:15.000000000 -0500
 +++ src/scite/gtk/makefile	2016-01-20 13:07:02.963614200 -0600
 @@ -93,7 +93,7 @@ CXXTFLAGS:=$(CXXTFLAGS) -Dunix

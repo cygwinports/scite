@@ -34,7 +34,7 @@
 @@ -97,7 +97,7 @@ BASEOBJS = \
  SOBJS = ScintillaWin.o ScintillaBase.o $(BASEOBJS)
  
- $(COMPONENT): $(SOBJS)
+ $(COMPONENT): $(SOBJS) Scintilla.def
 -	$(CXX) $(LDFLAGS) -o $@ $(STRIPFLAG) $(SOBJS) $(CXXFLAGS) $(LIBS)
 +	$(CXX) $(LDFLAGS) -o $@ $(STRIPFLAG) $(SOBJS) $(CXXTFLAGS) $(CXXFLAGS) $(LIBS)
  
@@ -43,7 +43,7 @@
 @@ -113,7 +113,7 @@ LOBJS = \
  	$(BASEOBJS) \
  	$(LEXOBJS)
- $(LEXCOMPONENT): $(LOBJS)
+ $(LEXCOMPONENT): $(LOBJS) Scintilla.def
 -	$(CXX) $(LDFLAGS) -o $@ $(STRIPFLAG) $(LOBJS) $(CXXFLAGS) $(LIBS)
 +	$(CXX) $(LDFLAGS) -o $@ $(STRIPFLAG) $(LOBJS) $(CXXTFLAGS) $(CXXFLAGS) $(LIBS)
  
